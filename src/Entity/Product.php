@@ -29,6 +29,12 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $price = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $productCode = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $action = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +96,30 @@ class Product
     public function setPrice(string $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getProductCode(): ?string
+    {
+        return $this->productCode;
+    }
+
+    public function setProductCode(string $productCode): self
+    {
+        $this->productCode = $productCode;
+
+        return $this;
+    }
+
+    public function getAction(): ?string
+    {
+        return $this->action;
+    }
+
+    public function setAction(string $action): self
+    {
+        $this->action = $action;
 
         return $this;
     }

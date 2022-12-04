@@ -39,7 +39,10 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
-    public function viewAllProduct(){
+    public function viewAllProduct(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
         $sql = "
             SELECT
                 product.name,
@@ -47,12 +50,15 @@ class ProductRepository extends ServiceEntityRepository
                 product.quantity,
                 product.category,
                 product.brand,
-                product.price
+                product.price,
+                product.product_code AS productCode
             FROM
                 product
+            WHERE
+                product.action != 'D'
         ";
 
-        return $sql->execute();
+        return $conn->prepare($sql)->executeQuery()->fetchAllAssociative();
     }
 
 //    /**
