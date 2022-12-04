@@ -39,6 +39,22 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
+    public function viewAllProduct(){
+        $sql = "
+            SELECT
+                product.name,
+                product.quantity,
+                product.quantity,
+                product.category,
+                product.brand,
+                product.price
+            FROM
+                product
+        ";
+
+        return $sql->execute();
+    }
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */
